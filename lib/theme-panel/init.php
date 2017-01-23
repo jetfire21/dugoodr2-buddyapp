@@ -11,16 +11,8 @@ function kleo_register_theme_panel_pages(){
 
 
 function kleo_theme_panel_page_welcome() {
-    $tab = isset( $_GET['tab'] ) ? $_GET['tab'] : false;
-    if( $tab == 'changelog' ){
-        kleo_theme_panel_page_changelog();
-    } else {
-        require( KLEO_LIB_DIR . '/theme-panel/buddyapp.php');
-    }
-}
 
-function kleo_theme_panel_page_changelog() {
-    require_once( KLEO_LIB_DIR . '/theme-panel/changelog.php');
+    require( KLEO_LIB_DIR . '/theme-panel/buddyapp.php');
 }
 
 require_once( KLEO_LIB_DIR . '/theme-panel/theme_options.php' );
@@ -58,7 +50,7 @@ function sq_panel_header( $active = 'welcome' ) {
         <a class="nav-tab<?php if ( $active == 'welcome' ) { ?> nav-tab-active<?php } ?>" href="<?php echo admin_url('admin.php?page=buddyapp'); ?>"><?php esc_html_e("Welcome", "buddyapp");?></a>
         <a class="nav-tab<?php if ( $active == 'options' ) { ?> nav-tab-active<?php } ?>" href="<?php echo admin_url('admin.php?page=buddyapp-options'); ?>"><?php esc_html_e("Theme options", "buddyapp");?></a>
         <a class="nav-tab<?php if ( $active == 'backup' ) { ?> nav-tab-active<?php } ?>" href="<?php echo admin_url('admin.php?page=buddyapp-backup'); ?>"><?php esc_html_e("Backup options", "buddyapp");?></a>
-        <a class="nav-tab<?php if ( $active == 'changelog' ) { ?> nav-tab-active<?php } ?>" href="<?php echo admin_url('admin.php?page=buddyapp&tab=changelog'); ?>"><?php esc_html_e("Changelog", "buddyapp");?></a>
+        <a class="nav-tab" href="http://seventhqueen.com/support/buddyapp/article/changelog" target="_blank"><?php esc_html_e("Changelog", "buddyapp");?></a>
     </h1>
 <?php
 }

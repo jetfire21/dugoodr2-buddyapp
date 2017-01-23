@@ -10,7 +10,7 @@
 :: Load Kleo framework
 ***************************************************/
 
-define( 'KLEO_THEME_VERSION', '1.3' );
+define( 'KLEO_THEME_VERSION', '1.4' );
 
 if ( ! isset( $content_width ) ) {
     $content_width = 1200;
@@ -82,16 +82,6 @@ function kleo_required_plugins() {
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url' => '', // If set, overrides default API URL and points to an external URL
         ),
-
-        /*array(
-            'name' => 'BuddyPress Cover Photo', // The plugin name
-            'slug' => 'buddypress-cover-photo', // The plugin slug (typically the folder name)
-            'required' => false, // If false, the plugin is only 'recommended' instead of required
-            'version' => '1.1', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
-            'external_url' => '', // If set, overrides default API URL and points to an external URL
-        ),*/
         array(
             'name' => 'bbPress', // The plugin name
             'slug' => 'bbpress', // The plugin slug (typically the folder name)
@@ -116,7 +106,7 @@ function kleo_required_plugins() {
             'slug' => 'js_composer', // The plugin slug (typically the folder name)
             'source' => get_template_directory() . '/lib/inc/js_composer.zip', // The plugin source
             'required' => true, // If false, the plugin is only 'recommended' instead of required
-            'version' => '4.11.2.1', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+            'version' => '5.0.1', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
             'force_activation' => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url' => '', // If set, overrides default API URL and points to an external URL

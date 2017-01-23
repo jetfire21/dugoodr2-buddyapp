@@ -26,11 +26,10 @@ do_action( 'bp_before_directory_groups_page' ); ?>
 	 * @since BuddyPress (1.1.0)
 	 */
 	do_action( 'bp_before_directory_groups_content' ); ?>
-<!--
+
 	<div id="group-dir-search" class="dir-search" role="search">
 		<?php bp_directory_groups_search_form(); ?>
-	</div>
---><!-- #group-dir-search -->
+	</div><!-- #group-dir-search -->
 
 	<form action="" method="post" id="groups-directory-form" class="dir-form">
 

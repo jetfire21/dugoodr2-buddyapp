@@ -33,10 +33,28 @@ if ( sq_option( 'header_bottom_text', Kleo::get_config( 'footer_text' ) ) ) {
 
 $logo_side = Kleo::get_config( 'logo_side' );
 
-$logo_attr = sq_option( $logo_side . '_retina' ) ? 'data-retina="' . esc_attr(sq_option( $logo_side . '_retina' )) . '"' : '';
-$logo_mini_attr = sq_option( 'logo_mini_retina' ) ? 'data-retina="' . esc_attr(sq_option(  'logo_mini_retina' )) . '"' : '';
+$logo_attr = '';
+$logo_mini_attr = '';
+if (sq_option( $logo_side . '_retina' )) {
+    $logo_attr = 'data-retina="' . esc_attr(sq_option( $logo_side . '_retina' ));
+}
+if (sq_option( 'logo_mini_retina' )) {
+    $logo_mini_attr = 'data-retina="' . esc_attr(sq_option(  'logo_mini_retina' )) . '"';
+}
 
 $logo_link = home_url();
+
+$logo_image = sq_option( $logo_side, Kleo::get_config( $logo_side . '_default' ), true );
+$logo_image_mini = sq_option( 'logo_mini', Kleo::get_config('logo_mini_default'), true );
+
+/* HTTPS check */
+if (is_ssl()) {
+    $logo_image = str_replace( 'http://', 'https://', $logo_image );
+    $logo_image_mini = str_replace( 'http://', 'https://', $logo_image_mini );
+    $logo_attr = str_replace( 'http://', 'https://', $logo_image_mini );
+    $logo_mini_attr = str_replace( 'http://', 'https://', $logo_image_mini );
+}
+
 
 $menu_classes = '';
 if (! sq_option( 'sidemenu_icons', true ) ) {
@@ -58,14 +76,14 @@ if (! sq_option( 'sidemenu_icons', true ) ) {
                 <!--logo standard-->
                 <?php if (sq_option( $logo_side, Kleo::get_config( $logo_side . '_default' ), true )) : ?>
                     <a href="<?php echo esc_url( $logo_link ); ?>" class="real-logo standard-logo" <?php echo $logo_attr;?>>
-                        <img src="<?php echo sq_option( $logo_side, Kleo::get_config( $logo_side . '_default' ), true ); ?>" alt="<?php bloginfo('name'); ?>">
+                        <img src="<?php echo $logo_image; ?>" alt="<?php bloginfo('name'); ?>">
                     </a>
                 <?php endif;?>
         
                 <!--mini logo - when sidemenu is minimized-->
                 <?php if (sq_option( 'logo_mini', Kleo::get_config('logo_mini_default'), true )) : ?>
                 <a href="<?php echo esc_url( $logo_link ); ?>" class="mini-logo standard-logo" <?php echo $logo_mini_attr;?>>
-                    <img src="<?php echo sq_option( 'logo_mini', Kleo::get_config('logo_mini_default'), true ); ?>" alt="<?php bloginfo('name'); ?>">
+                    <img src="<?php echo $logo_image_mini; ?>" alt="<?php bloginfo('name'); ?>">
                 </a>
                 <?php endif;?>
             </div>

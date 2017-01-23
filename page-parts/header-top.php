@@ -10,8 +10,18 @@ if ( sq_option( 'header_status', true, true ) == false ) {
 <?php
 //white or dark logo
 $logo_mobile = Kleo::get_config( 'logo_mobile' );
-$logo_attr = sq_option( $logo_mobile . '_retina', '' ) ? 'data-retina="' . esc_attr( sq_option( $logo_mobile . '_retina' ) ) . '"' : '';
+$logo_attr = '';
+if ( sq_option( $logo_mobile . '_retina', '' ) ) {
+    $logo_attr = 'data-retina="' . esc_attr( sq_option( $logo_mobile . '_retina' ) ) . '"';
+}
+
 $logo_link = home_url();
+$logo_image = sq_option( $logo_mobile, Kleo::get_config($logo_mobile . '_default') );
+
+if (is_ssl()) {
+    $logo_image = str_replace( 'http://', 'https://', $logo_image );
+    $logo_attr = str_replace( 'http://', 'https://', $logo_attr );
+}
 
 $current_header_classes = 'header-colors header-layout-01';
 
@@ -39,7 +49,7 @@ if ( sq_option( 'menu_dropdown', 'hover', true ) == 'hover' )  {
                 <?php if ( sq_option( $logo_mobile, Kleo::get_config($logo_mobile . '_default') ) ) : ?>
 
                     <a href="<?php echo esc_url( $logo_link ); ?>" class="mobile-logo standard-logo" <?php echo $logo_attr;?>>
-                        <img src="<?php echo sq_option( $logo_mobile, Kleo::get_config($logo_mobile . '_default') ); ?>" alt="<?php bloginfo('name'); ?>">
+                        <img src="<?php echo $logo_image; ?>" alt="<?php bloginfo('name'); ?>">
                     </a>
 
                 <?php endif; ?>

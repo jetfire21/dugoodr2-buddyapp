@@ -1,8 +1,7 @@
 <div class="item-list-tabs no-ajax" id="subnav" role="navigation">
 	<ul>
-<!-- 
 		<li class="feed"><a href="<?php bp_group_activity_feed_link(); ?>" title="<?php esc_attr_e( 'RSS Feed', 'buddypress' ); ?>"><?php _e( 'RSS', 'buddypress' ); ?></a></li>
--->
+
 		<?php
 
 		/**
@@ -12,7 +11,6 @@
 		 */
 		do_action( 'bp_group_activity_syndication_options' ); ?>
 
-<!--
 		<li id="activity-filter-select" class="last">
 			<label for="activity-filter-by"><?php _e( 'Show:', 'buddypress' ); ?></label>
 			<select id="activity-filter-by">
@@ -31,7 +29,6 @@
 			</select>
 		</li>
 	</ul>
--->
 </div><!-- .item-list-tabs -->
 
 <?php

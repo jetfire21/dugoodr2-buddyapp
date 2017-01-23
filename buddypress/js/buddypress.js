@@ -217,7 +217,7 @@ jq(document).ready( function() {
 				}
 
 				if ( 0 !== jq('#latest-update').length ) {
-					var l   = jq('#activity-stream li.new-update .activity-content .activity-inner p').html(),
+					var l   = jq('#activity-stream li.new-update .activity-content .activity-inner p').text(),
 						v     = jq('#activity-stream li.new-update .activity-content .activity-header p a.view').attr('href'),
 						ltext = jq('#activity-stream li.new-update .activity-content .activity-inner p').text(),
 						u     = '';

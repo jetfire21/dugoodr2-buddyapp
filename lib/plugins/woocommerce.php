@@ -376,12 +376,35 @@ function kleo_woo_change_layout( $layout ) {
         }
 
         //change default sidebar with Shop sidebar
-        add_filter('kleo_sidebar_name', create_function('', 'return "Shop";'));
+	    if ( ! $sidebar_id = get_transient( 'sq_sidebar_id_Shop' ) ) {
+		    $sidebar_id = sq_get_sidebar_id_by_name( 'Shop' );
+		    set_transient( 'sq_sidebar_id_Shop', $sidebar_id );
+	    } 
+		
+	    if ( $sidebar_id && is_active_sidebar( $sidebar_id ) ) {
+	        add_filter( 'kleo_sidebar_name', create_function( '', 'return "Shop";' ) );
+	    }
     }
 
     return $layout;
 }
 
+if ( ! function_exists( 'sq_get_sidebar_id_by_name' ) ) {
+	function sq_get_sidebar_id_by_name( $name ) {
+		global $wp_registered_sidebars;
+		$ret = false;
+
+		foreach ( (array) $wp_registered_sidebars as $key => $value ) {
+			if ( sanitize_title( $value['name'] ) == sanitize_title( $name ) ) {
+				$ret = $key;
+				break;
+			}
+		}
+
+		return $ret;
+
+	}
+}
 
 // Number of products per page
 $woo_per_page = sq_option( 'woo_shop_products', 15 );

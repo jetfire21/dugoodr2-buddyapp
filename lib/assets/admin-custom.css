@@ -88,6 +88,16 @@ tr.bottom-border td {
     padding:10px;
 }
 
+.about-wrap .feature-section p {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+@media only screen and (min-width:990px) {
+    .col.two-cols > div {width: 49%; float: left;}
+}
+
+
 /* Switch control
 // ========================================================================== */
 

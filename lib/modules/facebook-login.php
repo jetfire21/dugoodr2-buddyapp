@@ -290,10 +290,6 @@ function kleo_fb_intialize(){
             }
 
             extract( $FB_userdata );
-            // alex code
-            // var_dump($FB_userdata);
-            // echo "<h1><STOP!/h1>";
-            // exit;
 
             $display_name = $name;
 
@@ -315,8 +311,6 @@ function kleo_fb_intialize(){
             }
 
             if( empty( $name )) {
-                // alex_code
-                // $name = 'alex_t';
                 die(json_encode(array('error' => 'empty_name', esc_html__('We didn\'t find your name. Please complete your facebook account before proceeding.', 'buddyapp'))));
             }
 
@@ -330,13 +324,9 @@ function kleo_fb_intialize(){
             $userdata = compact( 'user_login', 'user_email', 'user_pass', 'display_name', 'first_name', 'last_name' );
             $userdata = apply_filters( 'kleo_fb_register_data', $userdata );
 
-            // alex code
-            // var_dump($userdata);
-
             $user_ID = wp_insert_user( $userdata );
             if ( is_wp_error( $user_ID )) {
                 die( json_encode( array( 'error' => $user_ID->get_error_message() ) ) );
-                // die( json_encode( array( 'error' => "alex ".$display_name." ".$user_login."-".$user_email."-".$first_name ) ) );
             }
 
             //send email with password

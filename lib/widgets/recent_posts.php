@@ -54,7 +54,7 @@ class Kleo_Recent_Posts_widget extends WP_Widget {
 						<a class="news-link" href="<?php the_permalink(); ?>">
 							<?php if( $thumb == true ) : ?>
 								<span class="news-thumb"><?php echo get_avatar( get_the_author_meta('ID'), 40 ); ?></span>
-								<span class="news-headline"><?php the_title(); ?><small class="news-time"><?php the_date();?></small></span>
+								<span class="news-headline"><?php the_title(); ?><small class="news-time"><?php echo get_the_date();?></small></span>
 							<?php else : ?>
 								<span><?php the_title(); ?><small class="news-time"><?php the_date();?></small></span>
 							<?php
